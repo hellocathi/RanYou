@@ -64,7 +64,7 @@ export class HandelFaultComponent implements OnInit {
     }
 
 
-
+    // 这是测试一下git上传好不好使哈哈哈哈哈哈或或或或或或或或或或
     getData() {
         this.apiService.faultOverview().then(data => {
             this.data = data;
