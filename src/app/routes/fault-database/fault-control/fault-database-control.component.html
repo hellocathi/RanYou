@@ -1,0 +1,92 @@
+<nz-tabset>
+    <nz-tab nzTitle="知识库管理">
+    </nz-tab>
+</nz-tabset>
+<div style="margin-left: 30%;">
+    <nz-select [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="请选择">
+        <nz-option nzValue="fault_code" nzLabel="故障代码"></nz-option>
+        <nz-option nzValue="fault_name" nzLabel="故障名称"></nz-option>
+        <nz-option nzValue="reason" nzLabel="故障发生原因"></nz-option>
+        <nz-option nzValue="feature" nzLabel="故障特征"></nz-option>
+        <nz-option nzValue="method" nzLabel="维护建议"></nz-option>
+        <nz-option nzValue="time" nzLabel="创建时间"></nz-option>
+    </nz-select>
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+        <input type="text" nz-input placeholder="输入查询内容" [(ngModel)]="inputValue" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+        <button nz-button nzType="primary" (click)="search()" nzSearch>查询</button>
+    </ng-template>
+
+    <button nz-button nzType="danger" (click)="optimize()" class="optimize" [disabled]="optimize_button">
+        <i nz-icon nzType="safety" nzTheme="outline"></i>知识库优化
+    </button>
+</div>
+<div class="table">
+    <nz-table #filterTable [nzData]="listOfData" [nzBordered]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total"
+        [nzShowQuickJumper]="true" nzSize="middle">
+        <ng-template #total let-total> 共 {{ total }}条数据</ng-template>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="fault_code" nzAlign="center"><span>故障代码</span></th>
+                <th nzShowSort nzSortKey="fault_name" nzAlign="center"><span>故障名称</span></th>
+                <th nzShowSort nzSortKey="reason" nzAlign="center"><span>故障发生原因</span></th>
+                <th nzShowSort nzSortKey="feature" nzAlign="center"><span>故障特征</span></th>
+                <th nzShowSort nzSortKey="method" nzAlign="center"><span>维护建议</span></th>
+                <th nzShowSort nzSortKey="time" nzAlign="center"><span>创建时间</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of filterTable.data">
+                <td nzAlign="center">{{ data.fault_code }}</td>
+                <td nzAlign="center">{{ data.fault_name }}</td>
+                <td nzAlign="center">{{ data.reason }}</td>
+                <td nzAlign="center">{{ data.feature }}</td>
+                <td nzAlign="center">{{ data.method }}</td>
+                <td nzAlign="center">{{ data.created_at }}</td>
+
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
+<style>
+    .optimize {
+        margin-right: 5%;
+        margin-top: 8px;
+        float: right;
+    }
+
+    nz-select {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+        width: 150px;
+    }
+
+    nz-input-group {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+
+    }
+
+    nz-tabset {
+        margin: 0px 10px;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
+    nz-table {
+        margin-top: 20px;
+    }
+
+    .table {
+
+        margin: 0px 50px;
+    }
+</style>

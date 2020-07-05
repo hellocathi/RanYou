@@ -1,0 +1,93 @@
+<nz-tabset class="tab1">
+    <nz-tab nzTitle="健康数据信息">
+    </nz-tab>
+</nz-tabset>
+<nz-tabset class="tab2" [nzType]="'card'" nzLinkRouter>
+    <nz-tab>
+        <a nz-tab-link [routerLink]="['../fault-message']">故障信息</a>
+    </nz-tab>
+    <nz-tab>
+        <a nz-tab-link [routerLink]="['../warn-message']">预警信息</a>
+    </nz-tab>
+</nz-tabset>
+<div style="text-align:center; ">
+    <nz-select [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="请选择">
+        <nz-option nzValue="fault_code" nzLabel="故障代码"></nz-option>
+        <nz-option nzValue="fault_name" nzLabel="故障名称"></nz-option>
+        <nz-option nzValue="device_code" nzLabel="设备代码"></nz-option>
+        <nz-option nzValue="device_name" nzLabel="设备名称"></nz-option>
+        <nz-option nzValue="boat_code" nzLabel="所属船只代码"></nz-option>
+        <nz-option nzValue="boat_name" nzLabel="所属船只名称"></nz-option>
+        <nz-option nzValue="created_at" nzLabel="设备创建时间"></nz-option>
+    </nz-select>
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+        <input type="text" nz-input placeholder="输入查询内容" [(ngModel)]="inputValue" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+        <button nz-button nzType="primary" (click)="search()" nzSearch>查询</button>
+    </ng-template>
+</div>
+<nz-table #filterTable [nzData]="listOfDisplayData" [nzBordered]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total"
+    [nzShowQuickJumper]="true" nzSize="middle">
+    <ng-template #total let-total> 共 {{ total }}条数据</ng-template>
+    <thead (nzSortChange)="sort($event)" nzSingleSort>
+        <tr>
+            <th nzShowSort nzSortKey="fault_code" nzAlign="center"><span>故障代码</span></th>
+            <th nzShowSort nzSortKey="fault_name" nzAlign="center"><span>故障名称</span></th>
+            <th nzShowSort nzSortKey="device_code" nzAlign="center"><span>设备代码</span></th>
+            <th nzShowSort nzSortKey="device_name" nzAlign="center"><span>设备名称</span></th>
+            <th nzShowSort nzSortKey="boat_code" nzAlign="center"><span>所属船只代码</span></th>
+            <th nzShowSort nzSortKey="boat_name" nzAlign="center"><span>所属船只名称</span></th>
+            <th nzShowSort nzSortKey="created_at" nzAlign="center"><span>设备创建时间</span></th>
+            <th nzShowSort nzSortKey="is_deal" nzAlign="center"><span>是否已解决</span></th>
+            <th nzAlign="center"><span>操作</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of filterTable.data">
+            <td nzAlign="center">{{ data.fault_code }}</td>
+            <td nzAlign="center">{{ data.fault_name }}</td>
+            <td nzAlign="center">{{ data.device_code }}</td>
+            <td nzAlign="center">{{ data.device_name }}</td>
+            <td nzAlign="center">{{ data.boat_code }}</td>
+            <td nzAlign="center">{{ data.boat_name }}</td>
+            <td nzAlign="center">{{ data.created_at }}</td>
+            <td nzAlign="center">{{ data.is_deal_over }}</td>
+            <td nzAlign="center"><button nz-button nzType="primary" nzSize="small" (click)="deal(data.id)"
+                    [disabled]="data.is_deal_button">已处理</button></td>
+        </tr>
+    </tbody>
+</nz-table>
+<style>
+    span {
+        font-weight: bold;
+    }
+
+    nz-select {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+        width: 150px;
+    }
+
+    nz-input-group {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+
+    }
+
+    nz-table {
+        margin: 0px 50px;
+    }
+
+    .tab1 {
+        margin: 0px 10px;
+    }
+
+    .tab2 {
+        margin: -5px 10px -5px 20px;
+    }
+</style>

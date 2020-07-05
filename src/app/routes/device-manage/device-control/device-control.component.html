@@ -1,0 +1,93 @@
+<nz-tabset nzLinkRouter>
+    <nz-tab>
+        <a nz-tab-link [routerLink]="['../ship-manage-control']">船只管理</a>
+    </nz-tab>
+    <nz-tab>
+        <a nz-tab-link [routerLink]="['../device-manage-control']">设备管理</a>
+    </nz-tab>
+</nz-tabset>
+<div style="text-align:center; ">
+    <nz-select [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="请选择">
+        <nz-option nzValue="device_code" nzLabel="设备代码"></nz-option>
+        <nz-option nzValue="device_name" nzLabel="设备名称"></nz-option>
+        <nz-option nzValue="boat_code" nzLabel="所属船只代码"></nz-option>
+        <nz-option nzValue="boat_name" nzLabel="所属船只名称"></nz-option>
+        <nz-option nzValue="time" nzLabel="设备创建时间"></nz-option>
+    </nz-select>
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+        <input type="text" nz-input placeholder="输入查询内容" [(ngModel)]="inputValue" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+        <button nz-button nzType="primary" (click)="search()" nzSearch>查询</button>
+    </ng-template>
+</div>
+<div class="table">
+    <button nz-button nzType="danger" (click)="Bigdelete()" nzSearch>批量删除</button>
+    <button nz-button nzType="primary" (click)="addUser()" nzSearch>添加新设备</button>
+    <nz-table #filterTable [nzData]="listOfData" [nzBordered]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total"
+        [nzShowQuickJumper]="true" (nzCurrentPageDataChange)="currentPageDataChange($event)" nzSize="middle">
+        <ng-template #total let-total> 共 {{ total }}条数据</ng-template>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzAlign="center" nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked"
+                    [nzIndeterminate]="isIndeterminate" (nzCheckedChange)="checkAll($event)"></th>
+                <th nzShowSort nzSortKey="device_code" nzAlign="center"><span>设备代码</span></th>
+                <th nzShowSort nzSortKey="device_name" nzAlign="center"><span>设备名称</span></th>
+                <th nzShowSort nzSortKey="boat_code" nzAlign="center"><span>所属船只代码</span></th>
+                <th nzShowSort nzSortKey="boat_name" nzAlign="center"><span>所属船只名称</span></th>
+                <th nzShowSort nzSortKey="time" nzAlign="center"><span>设备创建时间</span></th>
+                <th nzAlign="center"><span>操作</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of filterTable.data">
+                <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (nzCheckedChange)="refreshStatus()"></td>
+                <td nzAlign="center">{{ data.device_code }}</td>
+                <td nzAlign="center">{{ data.device_name }}</td>
+                <td nzAlign="center">{{ data.boat_code }}</td>
+                <td nzAlign="center">{{ data.boat_name }}</td>
+                <td nzAlign="center">{{ data.time }}</td>
+                <td nzAlign="center">
+                    <a (click)="startEdit(data)">编辑</a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a nz-popconfirm nzTitle="确定删除吗?" (nzOnConfirm)="deleteRow(data.id)">删除</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
+<style>
+    nz-select {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+        width: 150px;
+    }
+
+    nz-input-group {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+
+    }
+
+    nz-tabset {
+        margin: 0px 10px;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
+    nz-table {
+        margin-top: 20px;
+    }
+
+    .table {
+
+        margin: 0px 50px;
+    }
+</style>

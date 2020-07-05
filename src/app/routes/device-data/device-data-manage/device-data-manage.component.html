@@ -1,0 +1,182 @@
+<nz-tabset>
+    <nz-tab nzTitle="设备数据">
+    </nz-tab>
+</nz-tabset>
+<div style="text-align:center; ">
+    <nz-select [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="请选择">
+        <nz-option nzValue="boat_code" nzLabel="船只代码"></nz-option>
+        <nz-option nzValue="boat_name" nzLabel="船只名称"></nz-option>
+        <nz-option nzValue="device_code" nzLabel="设备代码"></nz-option>
+        <nz-option nzValue="device_name" nzLabel="设备名称"></nz-option>
+        <nz-option nzValue="time" nzLabel="时间"></nz-option>
+    </nz-select>
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+        <input type="text" nz-input placeholder="输入查询内容" [(ngModel)]="inputValue" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+        <button nz-button nzType="primary" (click)="search()" nzSearch>查询</button>
+    </ng-template>
+</div>
+<div class="table">
+    <nz-table #basicTable [nzData]="listOfData" [nzBordered]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total"
+        [nzShowQuickJumper]="true" nzSize="middle">
+        <ng-template #total let-total> 共 {{ total }}条数据</ng-template>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowExpand nzAlign="center" nzWidth='8%'>数据详情</th>
+                <th nzShowSort nzSortKey="boat_code" nzAlign="center"><span>船只代码</span></th>
+                <th nzShowSort nzSortKey="boat_name" nzAlign="center"><span>船只名称</span></th>
+                <th nzShowSort nzSortKey="device_code" nzAlign="center"><span>设备代码</span></th>
+                <th nzShowSort nzSortKey="device_name" nzAlign="center"><span>设备名称</span></th>
+                <th nzShowSort nzSortKey="time" nzAlign="center"><span>时间</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-template ngFor let-data [ngForOf]="basicTable.data">
+                <tr>
+                    <td nzShowExpand [(nzExpand)]="data.expand"></td>
+                    <td nzAlign="center">{{ data.boat_code }}</td>
+                    <td nzAlign="center">{{ data.boat_name }}</td>
+                    <td nzAlign="center">{{ data.device_code }}</td>
+                    <td nzAlign="center">{{ data.device_name }}</td>
+                    <td nzAlign="center">{{ data.time }}</td>
+                </tr>
+                <tr [nzExpand]="data.expand">
+                    <td nzAlign="center">压力(bar)</td>
+                    <td colspan="5">
+                        <nz-table #innerTable1 [nzData]="basicTable.data" nzSize="middle" [nzShowPagination]="false">
+                            <thead>
+                                <tr>
+                                    <th nzAlign="center" nzWidth='7%'>粗滤器1前</th>
+                                    <th nzAlign="center" nzWidth='7%'>粗滤器2前</th>
+                                    <th nzAlign="center" nzWidth='7%'>供应泵1前</th>
+                                    <th nzAlign="center" nzWidth='7%'>供应泵2前</th>
+                                    <th nzAlign="center" nzWidth='7%'>供应泵后</th>
+                                    <th nzAlign="center" nzWidth='7%'>增压泵1前</th>
+                                    <th nzAlign="center" nzWidth='7%'>增压泵2前</th>
+                                    <th nzAlign="center" nzWidth='7%'>增压泵后</th>
+                                    <th nzAlign="center" nzWidth='7%'>混油桶</th>
+                                    <th nzAlign="center" nzWidth='7%'>燃油出口</th>
+                                    <th nzAlign="center" nzWidth='7%'>自清滤器前</th>
+                                    <th nzAlign="center" nzWidth='7%'>自清滤器后</th>
+                                    <th nzAlign="center" nzWidth='7%'>热侧入口</th>
+                                </tr>
+                            </thead>
+        <tbody>
+            <tr>
+                <td nzAlign="center">{{data.p1}}</td>
+                <td nzAlign="center">{{data.p2}}</td>
+                <td nzAlign="center">{{data.p3}}</td>
+                <td nzAlign="center">{{data.p4}}</td>
+                <td nzAlign="center">{{data.p5}}</td>
+                <td nzAlign="center">{{data.p6}}</td>
+                <td nzAlign="center">{{data.p7}}</td>
+                <td nzAlign="center">{{data.p8}}</td>
+                <td nzAlign="center">{{data.p9}}</td>
+                <td nzAlign="center">{{data.p10}}</td>
+                <td nzAlign="center">{{data.p11}}</td>
+                <td nzAlign="center">{{data.p12}}</td>
+                <td nzAlign="center">{{data.p13}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+    </td>
+    </tr>
+    <tr [nzExpand]="data.expand">
+        <td nzAlign="center">温度(℃)</td>
+        <td colspan="5">
+            <nz-table class="table2" #innerTable2 [nzData]="basicTable.data" nzSize="middle" [nzShowPagination]="false">
+                <thead>
+                    <tr>
+                        <th nzAlign="center" nzWidth='7%'>混油桶</th>
+                        <th nzAlign="center" nzWidth='7%'>加热器1前</th>
+                        <th nzAlign="center" nzWidth='7%'>加热器2前</th>
+                        <th nzAlign="center" nzWidth='7%'>加热器后</th>
+                        <th nzAlign="center" nzWidth='7%'>冷却器前</th>
+                        <th nzAlign="center" nzWidth='7%'>冷却器后</th>
+                        <th nzAlign="center" nzWidth='7%'>出口处</th>
+                        <th nzAlign="center" nzWidth='7%'>混油桶前</th>
+                        <th nzAlign="center" nzWidth='7%'>热侧入口</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td nzAlign="center">{{data.t1}}</td>
+                        <td nzAlign="center">{{data.t2}}</td>
+                        <td nzAlign="center">{{data.t3}}</td>
+                        <td nzAlign="center">{{data.t4}}</td>
+                        <td nzAlign="center">{{data.t5}}</td>
+                        <td nzAlign="center">{{data.t6}}</td>
+                        <td nzAlign="center">{{data.t7}}</td>
+                        <td nzAlign="center">{{data.t8}}</td>
+                        <td nzAlign="center">{{data.t9}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </td>
+    </tr>
+    <tr [nzExpand]="data.expand">
+        <td nzAlign="center">粘度(cSt)</td>
+        <td colspan="5">
+            <nz-table class="table3" #innerTable3 [nzData]="basicTable.data" nzSize="middle" [nzShowPagination]="false">
+                <thead>
+                    <tr>
+                        <th nzAlign="center">加热器之后</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td nzAlign="center">{{data.v1}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </td>
+    </tr>
+    </ng-template>
+    </tbody>
+    </nz-table>
+</div>
+
+<style>
+    nz-select {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+        width: 150px;
+    }
+
+    nz-input-group {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+
+    }
+
+    nz-tabset {
+        margin: 0px 10px;
+    }
+
+    tr {
+        /* background-color: lightgoldenrodyellow; */
+        line-height: 5px;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
+    .table {
+
+        margin: 0px 50px;
+    }
+
+    .table2 {
+        padding-right: 31.3%;
+    }
+
+    .table3 {
+        padding-right: 93.3%;
+    }
+</style>

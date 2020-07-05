@@ -1,0 +1,29 @@
+<div class="alain-default__aside-inner">
+  <sidebar-nav class="d-block py-lg"></sidebar-nav>
+</div>
+<div class="communication">
+  <button nz-button nzType="default" nzShape="round" nzGhost nz-dropdown [nzDropdownMenu]="menu"
+    nzPlacement="topCenter"><i nz-icon nzType="mail"></i></button>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <div nz-menu-item (click)="write_mail()">
+        <li>写信</li>
+      </div>
+      <div nz-menu-item (click)="send_mail()">
+        <li>已发送</li>
+      </div>
+      <div nz-menu-item (click)="inbox()">
+        <li>收信箱</li>
+      </div>
+    </ul>
+  </nz-dropdown-menu>
+</div>
+<style>
+  .communication {
+    width: 150px;
+    position: absolute;
+    bottom: 30px;
+    left: 60px;
+  }
+</style>

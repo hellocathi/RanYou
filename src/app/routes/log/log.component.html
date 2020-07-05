@@ -1,0 +1,64 @@
+<nz-tabset>
+    <nz-tab nzTitle="系统日志">
+    </nz-tab>
+</nz-tabset>
+<div style="text-align:center; ">
+    <nz-select [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="请选择">
+        <nz-option nzValue="description" nzLabel="操作描述"></nz-option>
+        <nz-option nzValue="created_at" nzLabel="时间"></nz-option>
+    </nz-select>
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+        <input type="text" nz-input placeholder="输入查询内容" [(ngModel)]="inputValue" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+        <button nz-button nzType="primary" (click)="search()" nzSearch>查询</button>
+    </ng-template>
+</div>
+<div class="table">
+    <nz-table #filterTable [nzData]="listOfData" [nzBordered]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total"
+        [nzShowQuickJumper]="true" nzSize="middle">
+        <ng-template #total let-total> 共 {{ total }}条数据</ng-template>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="description" nzAlign="center"><span>操作描述</span></th>
+                <th nzShowSort nzSortKey="created_at" nzAlign="center"><span>时间</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of filterTable.data">
+                <td nzAlign="center">{{ data.description }}</td>
+                <td nzAlign="center">{{ data.created_at }}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
+<style>
+    span {
+        font-weight: bold;
+
+    }
+
+    nz-select {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+        width: 150px;
+    }
+
+    nz-input-group {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+
+    }
+
+    nz-tabset {
+        margin: 0px 10px;
+    }
+
+    nz-table {
+        margin: 0px 50px;
+    }
+</style>

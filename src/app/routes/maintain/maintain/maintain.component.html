@@ -1,0 +1,30 @@
+<div class="header">
+    <nz-tabset>
+        <nz-tab nzTitle="维护手册">
+        </nz-tab>
+    </nz-tabset>
+    <button nz-button nzType="primary" nzShape="round" (click)="download()">
+        <i nz-icon nzType="download"></i>下载
+    </button>
+</div>
+<pdf-viewer [src]="pdfSrc" [zoom]="1.4"></pdf-viewer>
+
+<style>
+    .header {
+        position: fixed;
+        width: 100%;
+    }
+
+    nz-tabset {
+        margin: 0 10px;
+    }
+
+    pdf-viewer {
+        padding-top: 120px;
+        display: block;
+    }
+
+    button {
+        margin: 5px 20px;
+    }
+</style>

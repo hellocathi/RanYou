@@ -1,0 +1,15 @@
+<body>
+    <nz-tabset>
+        <nz-tab>
+            <a nz-tab-link [routerLink]="['../ship-manage-control']" queryParamsHandling="merge">船只管理</a>
+        </nz-tab>
+        <nz-tab>
+            <a nz-tab-link [routerLink]="['../device-manage-control']" queryParamsHandling="merge">设备管理</a>
+        </nz-tab>
+    </nz-tabset>
+</body>
+<style>
+    nz-tabset {
+        margin: 10px;
+    }
+</style>

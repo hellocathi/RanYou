@@ -1,0 +1,178 @@
+[
+    {
+        "id":"1",
+        "ship":"1号",
+        "device":"0101",
+        "buydate":"2020-01-15",
+        "introduction": 1
+        
+    },
+    {
+        "id":"2",
+        "ship":"1号",
+        "device":"0102",
+        "buydate":"2020-01-15",
+        "introduction": 12
+        
+    },
+    {
+        "id":"3",
+        "ship":"1号",
+        "device":"0103",
+        "buydate":"2020-01-15",
+        "introduction": 5
+        
+    },
+    {
+        "id":"4",
+        "ship":"2号",
+        "device":"0201",
+        "buydate":"2020-01-15",
+        "introduction": 4
+        
+    },
+    {
+        "id":"5",
+        "ship":"2号",
+        "device":"0202",
+        "buydate":"2020-01-15",
+        "introduction": 3
+        
+    },
+    {
+        "id":"6",
+        "ship":"3号",
+        "device":"0301",
+        "buydate":"2020-01-15",
+        "introduction": 18
+        
+    },
+    {
+        "id":"7",
+        "ship":"3号",
+        "device":"0302",
+        "buydate":"2020-01-15",
+        "introduction": 19
+        
+    },
+    {
+        "id":"8",
+        "ship":"3号",
+        "device":"0303",
+        "buydate":"2020-01-15",
+        "introduction": 16
+        
+    },
+    {
+        "id":"9",
+        "ship":"3号",
+        "device":"0304",
+        "buydate":"2020-01-15",
+        "introduction": 17
+        
+    },
+    {
+        "id":"10",
+        "ship":"3号",
+        "device":"0305",
+        "buydate":"2020-01-15",
+        "introduction": 20
+        
+    },
+    {
+        "id":"11",
+        "ship":"4号",
+        "device":"0401",
+        "buydate":"2020-02-1",
+        "introduction": 80
+        
+    },
+    {
+        "id":"12",
+        "ship":"4号",
+        "device":"0402",
+        "buydate":"2020-01-15",
+        "introduction": 11
+        
+    },
+    {
+        "id":"13",
+        "ship":"5号",
+        "device":"0501",
+        "buydate":"2020-01-15",
+        "introduction": 12
+        
+    },
+    {
+        "id":"14",
+        "ship":"5号",
+        "device":"0502",
+        "buydate":"2020-01-15",
+        "introduction": 13
+        
+    },
+    {
+        "id":"15",
+        "ship":"5号",
+        "device":"0503",
+        "buydate":"2020-01-15",
+        "introduction": 17
+        
+    },
+    {
+        "id":"16",
+        "ship":"6号",
+        "device":"0601",
+        "buydate":"2020-01-15",
+        "introduction": 15
+        
+    },
+    {
+        "id":"17",
+        "ship":"7号",
+        "device":"0701",
+        "buydate":"2020-01-15",
+        "introduction": 21
+        
+    },
+    {
+        "id":"18",
+        "ship":"7号",
+        "device":"0702",
+        "buydate":"2020-01-15",
+        "introduction": 31
+        
+    },
+    {
+        "id":"19",
+        "ship":"7号",
+        "device":"0703",
+        "buydate":"2020-01-15",
+        "introduction": 41
+        
+    },
+    {
+        "id":"20",
+        "ship":"7号",
+        "device":"0704",
+        "buydate":"2020-03-20",
+        "introduction": 35
+        
+    },
+    {
+        "id":"21",
+        "ship":"8号",
+        "device":"0801",
+        "buydate":"2020-03-20",
+        "introduction": 25
+        
+    },
+    {
+        "id":"22",
+        "ship":"8号",
+        "device":"0802",
+        "buydate":"2020-01-15",
+        "introduction": 3
+        
+    }
+]

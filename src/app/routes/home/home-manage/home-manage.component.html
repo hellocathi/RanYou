@@ -1,0 +1,155 @@
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @font-face {
+            font-family: 'UnidreamLED';
+            src: url(assets/UnidreamLED/UnidreamLED.eot);
+            src: url(assets/UnidreamLED/UnidreamLED.eot?#iefix)format('embedded-opentype'),
+                url('assets/UnidreamLED/UnidreamLED.woff') format('woff'),
+                local('UnidreamLED'), url("assets/UnidreamLED/UnidreamLED.woff");
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .container {
+            position: relative;
+            height: 1100px;
+            /* padding-top: 15px; */
+        }
+
+        .wraper {
+            /* border: 1px solid red; */
+            border: 1px solid transparent;
+            /* margin: 5px; */
+
+        }
+
+        .left {
+            width: 23.5%;
+            position: absolute;
+            left: 3%;
+        }
+
+        .right {
+            width: 23.5%;
+            position: absolute;
+            left: 73.5%;
+        }
+
+        .center {
+            width: 35%;
+            position: absolute;
+            left: 32.5%;
+
+        }
+
+        .small {
+            height: 292px;
+
+        }
+
+        .middle {
+            height: 420px;
+
+        }
+
+        button {
+            margin: 10px;
+        }
+
+        table {
+            width: 96%;
+            margin: 47px 0 20px 50px;
+        }
+
+        td {
+            width: 19%;
+            color: white;
+            font-size: 22px;
+            padding: 0px 0px 0 3%;
+
+
+        }
+
+        .number {
+            font-family: 'UnidreamLED';
+            font-size: 35px;
+            padding: 0px 0px 0 10px;
+            /* color: aqua; */
+            background-image: -webkit-linear-gradient(bottom, #00ff62, #00d9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container clearfix"
+        style="background:url('assets/tmp/img/background_content.jpg'); background-size: 100% 100%; ">
+        <div class="wraper" style="height:155px;">
+            <table>
+                <tr>
+                    <td>
+                        <img src="assets/tmp/img/shiplogo.jpg" /> &nbsp;船只总数 <span
+                            class="number">{{data[0].boat_total}}</span></td>
+
+                    <td><img src="assets/tmp/img/shiplogo.jpg" /> &nbsp;设备总数 <span
+                            class="number">{{data[1].device_total}}</span></td>
+
+                    <td><img src="assets/tmp/img/shiplogo.jpg" /> &nbsp;故障型数量 <span
+                            class="number">{{data[2].fault_type_total}}</span></td>
+
+                    <td><img src="assets/tmp/img/shiplogo.jpg" /> &nbsp;发生故障数 <span
+                            class="number">{{data[3].fault__total}}</span></td>
+
+                    <td><img src="assets/tmp/img/shiplogo.jpg" /> &nbsp;发生预警数 <span
+                            class="number">{{data[4].warning_total}}</span></td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="left">
+            <div class="wraper small">
+                <handel-fault></handel-fault>
+
+            </div>
+            <div class="wraper small" style="margin-top: 10px;">
+                <ship-fault></ship-fault>
+            </div>
+            <div class="wraper small" style="margin-top: 10px;">
+                <ship-warn></ship-warn>
+            </div>
+        </div>
+        <div class="center">
+            <div class="wraper middle">
+                <tend-chart></tend-chart>
+            </div>
+            <div class="wraper middle" style="margin-top: 50px;">
+                <column-statistics></column-statistics>
+            </div>
+        </div>
+        <div class="right">
+            <div class="wraper small">
+                <analyze-fault></analyze-fault>
+            </div>
+            <div class="wraper small" style="margin-top: 10px;">
+                <device-fault></device-fault>
+            </div>
+            <div class="wraper small" style="margin-top: 10px;">
+                <device-warn></device-warn>
+            </div>
+        </div>
+    </div>
+
+</body>

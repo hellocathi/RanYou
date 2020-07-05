@@ -1,0 +1,81 @@
+<div class="table">
+    <nz-table #editRowTable [nzData]="listOfData" [nzBordered]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total"
+        [nzShowQuickJumper]="true" nzSize="middle">
+        <ng-template #total let-total> 共 {{ total }}条数据</ng-template>
+        <thead>
+            <tr>
+                <th nzWidth="10%" nzAlign="center"><span>故障代码</span></th>
+                <th nzWidth="12.5%" nzAlign="center"><span>故障名称</span></th>
+                <th nzWidth="12.5%" nzAlign="center"><span>故障发生原因</span></th>
+                <th nzWidth="20%" nzAlign="center"><span>故障特征</span></th>
+                <th nzWidth="25%" nzAlign="center"><span>维护建议</span></th>
+                <th nzWidth="20%" nzAlign="center"><span>操作</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of editRowTable.data">
+                <td nzAlign="center">
+                    <ng-container *ngIf="!editCache[data.id].edit; else fault_codeTpl">
+                        {{ data.fault_code }}
+                    </ng-container>
+                    <ng-template #fault_codeTpl>
+                        <input type="text" nz-input [(ngModel)]="editCache[data.id].data.fault_code" />
+                    </ng-template>
+                </td>
+                <td nzAlign="center">
+                    <ng-container *ngIf="!editCache[data.id].edit; else fault_nameTpl">
+                        {{ data.fault_name }}
+                    </ng-container>
+                    <ng-template #fault_nameTpl>
+                        <input type="text" nz-input [(ngModel)]="editCache[data.id].data.fault_name" />
+                    </ng-template>
+                </td>
+                <td nzAlign="center">
+                    <ng-container *ngIf="!editCache[data.id].edit; else reasonTpl">
+                        {{ data.reason }}
+                    </ng-container>
+                    <ng-template #reasonTpl>
+                        <input type="text" nz-input [(ngModel)]="editCache[data.id].data.reason" />
+                    </ng-template>
+                </td>
+                <td nzAlign="center">
+                    <ng-container *ngIf="!editCache[data.id].edit; else featureTpl">
+                        {{ data.feature }}
+                    </ng-container>
+                    <ng-template #featureTpl>
+                        <input type="text" nz-input [(ngModel)]="editCache[data.id].data.feature" />
+                    </ng-template>
+                </td>
+                <td nzAlign="center">
+                    <ng-container *ngIf="!editCache[data.id].edit; else methodTpl">
+                        {{ data.method }}
+                    </ng-container>
+                    <ng-template #methodTpl>
+                        <input type="text" nz-input [(ngModel)]="editCache[data.id].data.method" />
+                    </ng-template>
+                </td>
+                <td nzAlign="center">
+                    <div class="editable-row-operations">
+                        <ng-container *ngIf="!editCache[data.id].edit; else saveTpl">
+                            <a (click)="startEdit(data.id)">编辑</a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <button nz-button nzType="danger" (click)="accept(data)">优化</button>
+                            <button nz-button nzType="primary" (click)="refuse(data.id)">取消优化</button>
+                        </ng-container>
+                        <ng-template #saveTpl>
+                            <a (click)="saveEdit(data.id)">保存</a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a (click)="cancelEdit(data.id)">取消</a>
+                        </ng-template>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
+
+<style>
+
+</style>

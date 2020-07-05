@@ -1,0 +1,94 @@
+<nz-tabset [nzType]="'card'" nzLinkRouter class="tab2">
+    <nz-tab>
+        <a nz-tab-link [routerLink]="['../fault-type']">故障类型统计</a>
+    </nz-tab>
+    <nz-tab>
+        <a nz-tab-link [routerLink]="['../ship-fault']">船只故障统计</a>
+    </nz-tab>
+    <nz-tab>
+        <a nz-tab-link [routerLink]="['../device-fault']">设备故障统计</a>
+    </nz-tab>
+
+</nz-tabset>
+<div style="text-align:center; ">
+    <nz-select [(ngModel)]="dateValue" nzPlaceHolder="请选择时间" (ngModelChange)="date($event)">
+        <nz-option nzValue="1" nzLabel="近七天"></nz-option>
+        <nz-option nzValue="2" nzLabel="近一月"></nz-option>
+        <nz-option nzValue="3" nzLabel="近一季"></nz-option>
+        <nz-option nzValue="4" nzLabel="近一年"></nz-option>
+        <nz-option nzValue="5" nzLabel="全部"></nz-option>
+    </nz-select>
+    <nz-select [(ngModel)]="selectedValue" nzPlaceHolder="请选择">
+        <nz-option nzValue="boat_code" nzLabel="船只代码"></nz-option>
+        <nz-option nzValue="boat_name" nzLabel="船只名称"></nz-option>
+        <nz-option nzValue="fault_boat_count" nzLabel="发生故障次数"></nz-option>
+        <nz-option nzValue="fault_boat_scale" nzLabel="发生故障占比"></nz-option>
+    </nz-select>
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+        <input type="text" nz-input placeholder="输入查询内容" [(ngModel)]="inputValue" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+        <button nz-button nzType="primary" (click)="search()" nzSearch>查询</button>
+    </ng-template>
+
+</div>
+<div class="table">
+
+    <nz-table #filterTable [nzData]="listOfData" [nzBordered]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total"
+        [nzShowQuickJumper]="true" nzSize="middle">
+        <ng-template #total let-total> 共 {{ total }}条数据</ng-template>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="boat_code" nzAlign="center"><span>船只代码</span></th>
+                <th nzShowSort nzSortKey="boat_name" nzAlign="center"><span>船只名称</span></th>
+                <th nzShowSort nzSortKey="fault_boat_count" nzAlign="center"><span>发生故障次数</span></th>
+                <th nzShowSort nzSortKey="fault_boat_scale" nzAlign="center"><span>发生故障占比</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of filterTable.data">
+                <td nzAlign="center">{{ data.boat_code }}</td>
+                <td nzAlign="center">{{ data.boat_name }}</td>
+                <td nzAlign="center">{{ data.fault_boat_count }}</td>
+                <td nzAlign="center">{{ data.fault_boat_scale }}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
+<nz-tabset>
+    <nz-tab [(nzTitle)]="selectedLabel"></nz-tab>
+</nz-tabset>
+<ship-fault-column></ship-fault-column>
+<style>
+    span {
+        font-weight: bold;
+    }
+
+    nz-select {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+        width: 150px;
+    }
+
+    nz-input-group {
+        margin-top: 12px;
+        margin-right: 8px;
+        margin-bottom: 20px;
+        margin-left: 8px;
+
+    }
+
+    nz-table {
+        margin: 0px 50px;
+    }
+
+    .tab1 {
+        margin: 0px 10px;
+    }
+
+    .tab2 {
+        margin: -5px 20px;
+    }
+</style>

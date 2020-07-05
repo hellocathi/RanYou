@@ -1,0 +1,92 @@
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .wraper {
+            /* border: 1px solid black; */
+            background-color: white;
+            box-shadow: 2px 4px 6px;
+            margin: 30px 20px;
+
+        }
+
+        .left {
+            width: 55%;
+            float: left;
+        }
+
+        .right {
+            width: 45%;
+            float: right;
+        }
+
+        .left-up {
+            height: 450px;
+        }
+
+        .left-down {
+            height: 450px;
+        }
+
+        .right-up {
+            height: 450px;
+        }
+
+        .right-down {
+            height: 450px;
+        }
+
+        .status1 {
+            color: limegreen
+        }
+
+        .status2 {
+            color: yellow
+        }
+
+        .status3 {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="margin:20px">
+        <div style="margin:0 0 -25px 20px">
+            <cascader (outer)="getcascaderId($event)"></cascader>
+            <span style="margin-left:20px">当前状态：
+                <span [ngClass]="{'status1':green,'status2':yellow,'status3':red}">{{current_status}}</span>
+            </span>
+        </div>
+        <div class="left">
+            <div class="left-up wraper">
+                <app-video></app-video>
+            </div>
+            <div class="left-down wraper">
+                <device-table2></device-table2>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-up wraper">
+                <app-pressure></app-pressure>
+            </div>
+            <div class="right-down wraper">
+                <app-temperature></app-temperature>
+            </div>
+        </div>
+    </div>
+</body>

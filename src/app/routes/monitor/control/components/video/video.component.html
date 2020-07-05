@@ -1,0 +1,86 @@
+<body>
+    <video autoplay loop muted>
+        <source src="../../../../../../assets/device4.mp4" type="video/mp4">
+        您的浏览器不支持
+    </video>
+    <div [ngClass]="{'a_show':a,'a_hidden':!a}">
+        <img src="assets/tmp/img/red.png" />
+    </div>
+</body>
+<style>
+    @-webkit-keyframes ping {
+        0% {
+            -webkit-transform: scale(0.6);
+            transform: scale(0.6);
+            opacity: 0.6;
+        }
+
+        50% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: scale(0.6);
+            transform: scale(0.6);
+            opacity: 0.6;
+        }
+    }
+
+    @keyframes ping {
+        0% {
+            -webkit-transform: scale(0.6);
+            transform: scale(0.6);
+            opacity: 0.6;
+        }
+
+        50% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: scale(0.6);
+            transform: scale(0.6);
+            opacity: 0.6;
+        }
+    }
+
+    .a_show {
+        /* border: 1px solid white; */
+        margin: -10.5% 0 0 9.2%;
+        position: absolute;
+        z-index: 10;
+        -webkit-animation: ping 0.6s ease-in-out infinite both;
+        animation: ping 0.6s ease-in-out infinite both;
+    }
+
+    .a_hidden {
+        visibility: hidden;
+        margin: -10% 0 0 10%;
+        position: absolute;
+        z-index: 10;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    video {
+        /* position: fixed; */
+        right: 0px;
+        bottom: 0px;
+        min-width: 100%;
+        min-height: 100%;
+        height: 100%;
+        width: 100%;
+        /*拉伸，适应父容器尺寸*/
+        object-fit: fill;
+        /*加滤镜*/
+        /* -webkit-filter: grayscale(100%);
+        filter: grayscale(100%); */
+    }
+</style>

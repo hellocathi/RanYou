@@ -1,0 +1,279 @@
+<style>
+    .bg {
+        /* border-top: 2px solid blue; */
+        background-color: gainsboro;
+        height: 66px;
+        padding: 5px;
+
+    }
+
+    .clearfix:after {
+        content: "";
+        display: block;
+        height: 0;
+        line-height: 0;
+        visibility: hidden;
+        clear: both;
+    }
+
+    .container {
+        position: relative;
+        margin: 0 20px 0 20px;
+        padding-top: 10px;
+        /* border: 1px solid black; */
+    }
+
+    .a0 {
+        width: 10.5%;
+        float: left;
+    }
+
+    .a1 {
+        width: 11.7%;
+        position: absolute;
+        left: 12.2%;
+    }
+
+    .a2 {
+        width: 11.7%;
+        position: absolute;
+        left: 24.9%;
+    }
+
+    .a3 {
+        width: 11.7%;
+        position: absolute;
+        left: 37.6%;
+    }
+
+    .a4 {
+        width: 11.7%;
+        position: absolute;
+        left: 50.3%;
+    }
+
+    .a5 {
+        width: 11.7%;
+        position: absolute;
+        left: 63%;
+    }
+
+    .a6 {
+        width: 11.7%;
+        position: absolute;
+        left: 75.7%;
+    }
+
+    .a7 {
+        width: 11.7%;
+        position: absolute;
+        left: 88.4%;
+    }
+
+    .button {
+        margin-top: -5px;
+        position: absolute;
+        left: 52.5%;
+    }
+
+    .up {
+        border-left: 4px solid deepskyblue;
+        border-bottom: 2px solid deepskyblue;
+        height: 28px;
+        text-align: center;
+
+    }
+
+    .down {
+        background-color: white;
+        height: 28px;
+        padding: 0 3px 3px 3px;
+        text-align: center;
+    }
+
+    span {
+        color: deepskyblue;
+    }
+
+    .line {
+        border-bottom: 1px dashed gray;
+    }
+</style>
+
+<div style="padding-top:20px">
+    <div class="clearfix container">
+        <div class="bg a0" style="font-weight: bold;">
+            <div>压力</div>
+            <div>单位：bar</div>
+        </div>
+        <div class="bg a1">
+            <div class="up">
+                <span>粗滤器1前</span>
+            </div>
+            <div class="down">0</div>
+        </div>
+
+        <div class="bg a2">
+            <div class="up">
+                <span>粗滤器2前</span>
+            </div>
+            <div class="down">0.5</div>
+        </div>
+        <div class="bg a3">
+            <div class="up">
+                <span>供应泵1前</span>
+            </div>
+            <div class="down">-0.2</div>
+        </div>
+        <div class="bg a4">
+            <div class="up">
+                <span>供应泵2前</span>
+            </div>
+            <div class="down">0</div>
+        </div>
+        <div class="bg a5">
+            <div class="up">
+                <span>供应泵后</span>
+            </div>
+            <div class="down">4.1</div>
+        </div>
+        <div class="bg a6">
+            <div class="up">
+                <span>增压泵1前</span>
+            </div>
+            <div class="down">4.2</div>
+        </div>
+        <div class="bg a7">
+            <div class="up">
+                <span>增压泵2前</span>
+            </div>
+            <div class="down">4.5</div>
+        </div>
+
+    </div>
+    <div class="clearfix container line">
+        <div class="a0" style=" height: 70px;padding: 5px;">
+        </div>
+        <div class="bg a1">
+            <div class="up">
+                <span>增压泵后</span>
+            </div>
+            <div class="down">10.2</div>
+        </div>
+
+        <div class="bg a2">
+            <div class="up">
+                <span>混油桶</span>
+            </div>
+            <div class="down">3.5</div>
+        </div>
+        <div class="bg a3">
+            <div class="up">
+                <span>燃油出口</span>
+            </div>
+            <div class="down">9.4</div>
+        </div>
+        <div class="bg a4">
+            <div class="up">
+                <span>自清滤器前</span>
+            </div>
+            <div class="down">10</div>
+        </div>
+        <div class="bg a5">
+            <div class="up">
+                <span>自清滤器后</span>
+            </div>
+            <div class="down">10</div>
+        </div>
+        <div class="bg a6">
+            <div class="up">
+                <span>热侧入口</span>
+            </div>
+            <div class="down">7.2</div>
+        </div>
+    </div>
+
+    <div class="clearfix container">
+        <div class="bg a0" style="font-weight: bold;">
+            <div>温度</div>
+            <div>单位：℃</div>
+        </div>
+        <div class="bg a1">
+            <div class="up">
+                <span>混油桶</span>
+            </div>
+            <div class="down">120</div>
+        </div>
+
+        <div class="bg a2">
+            <div class="up">
+                <span>加热器1前</span>
+            </div>
+            <div class="down">115</div>
+        </div>
+        <div class="bg a3">
+            <div class="up">
+                <span>加热器2前</span>
+            </div>
+            <div class="down">126</div>
+        </div>
+        <div class="bg a4">
+            <div class="up">
+                <span>加热器后</span>
+            </div>
+            <div class="down">142</div>
+        </div>
+        <div class="bg a5">
+            <div class="up">
+                <span>冷却器前</span>
+            </div>
+            <div class="down">55</div>
+        </div>
+        <div class="bg a6">
+            <div class="up">
+                <span>冷却器后</span>
+            </div>
+            <div class="down">42</div>
+        </div>
+        <div class="bg a7">
+            <div class="up">
+                <span>出口处</span>
+            </div>
+            <div class="down">142</div>
+        </div>
+
+    </div>
+    <div class="clearfix container line">
+        <div class="a0" style=" height: 70px;padding: 5px;">
+        </div>
+        <div class="bg a1">
+            <div class="up">
+                <span>混油桶前</span>
+            </div>
+            <div class="down">87</div>
+        </div>
+
+        <div class="bg a2">
+            <div class="up">
+                <span>热侧入口</span>
+            </div>
+            <div class="down">168</div>
+        </div>
+    </div>
+    <div class="clearfix container">
+        <div class="bg a0" style="font-weight: bold;">
+            <div>粘度</div>
+            <div>单位：cSt</div>
+        </div>
+        <div class="bg a1">
+            <div class="up">
+                <span>加热器之后</span>
+            </div>
+            <div class="down">12</div>
+        </div>
+
+    </div>
+    <div class="button">
+        <button nz-button nzType="primary" (click)="goDetails()"><i nz-icon nzType="setting"></i>详情</button>
+    </div>
+</div>
